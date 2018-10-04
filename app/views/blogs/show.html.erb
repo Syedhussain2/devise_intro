@@ -13,4 +13,15 @@
       <% end %>
     </div>
   </div>
+  <%= link_to 'NEW comment', new_blog_comment_path(@blog) %>
+  <ul class='list-group'>
+  <li class='list-group-item'>
+    <% @blog.comments.each do |comment| %>
+    <%= link_to edit_blog_comment_path(@blog, comment) do%>
+    <%= comment.body %>
+    <% end %>
+    | <%= link_to 'Destroy', blog_comment_url(@blog, comment), method: :delete, data: {confirm: 'Are you sure?'} %>
+  </li>
+  <% end %>
+</ul>
 </div>
